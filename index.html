@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Ve-database : Database of events taken from GDELT 2.0 and Petrarch/Phoenix ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ve-database</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/colindeen/VE-Database">View on GitHub</a>
+
+          <h1 id="project_title">Ve-database</h1>
+          <h2 id="project_tagline">Database of events taken from GDELT 2.0 and Petrarch/Phoenix </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/colindeen/VE-Database/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/colindeen/VE-Database/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="violent-event-database" class="anchor" href="#violent-event-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Violent Event Database</h1>
+
+<hr>
+
+<p>The Violent Event Database (VED) will provide end-users the ability to compare violent events from disparate data sources to determine how well a given data source may serve a project analyzing political violence. Specifically, I will gather data from the <a href="http://data.gdeltproject.org/events/index.html">Global Database of Event, Language, and Tone (GDELT)</a> and the <a href="http://phoenixdata.org/data">Phoenix Data Project</a> for the time beginning 09/01/2015 and ending 10/01/2015. The data are global in scope and updated every 15 minutes, so one month of data can have millions of observations. Depending on data size, I may filter down to only include events that are considered increasingly violent (-7 to -10 on the Goldstein scale). Note: see <a href="http://eventdata.parusanalytics.com/data.dir/cameo.html">CAMEO</a> for description of Goldstein scale and CAMEO coding ontology. </p>
+
+<p>This project is being conducted in support of on-going work efforts to provide a more precise/higher-fidelity geo-located events database for analysis. If successful, it will be expanded to ingest additional data sources and a variable temporal domain.   </p>
+
+<h2>
+<a id="database-structure" class="anchor" href="#database-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Database Structure</h2>
+
+<hr>
+
+<p>Four tables will be needed to harmonize the data and allow us to conduct a proper comparison.  </p>
+
+<ul>
+<li>
+<p><strong>Phoenix Data Table</strong></p>
+
+<ul>
+<li>Columns: Phoenix-assigned <strong><em>Event ID</em></strong>, <strong><em>CAMEO code</em></strong>, <strong><em>Description</em></strong> of event, <strong><em>Date</em></strong><br>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>GDELT Data Table</strong>  </p>
+
+<ul>
+<li>Columns: GDELT-assigned <strong><em>Event ID</em></strong>, <strong><em>CAMEO code</em></strong>, <strong><em>Description</em></strong> of event, <strong><em>Date</em></strong><br>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Temporal Data Table</strong></p>
+
+<ul>
+<li>Columns: GDELT/Phoenix-assigned <strong><em>Event ID</em></strong>, <strong><em>Date</em></strong>
+</li>
+<li>Rows: All dates 09/01/15 - 10/01/15. Where/if Event ID is missing, "."<br>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Spatial Data Table</strong></p>
+
+<ul>
+<li>Columns: GDELT/Phoenix-assigned <strong><em>Event ID</em></strong>, Location event occurred (<strong><em>Place Name</em></strong>), <strong><em>Latitude</em></strong>, <strong><em>Longitude</em></strong> </li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="questions" class="anchor" href="#questions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questions</h2>
+
+<hr>
+
+<p>The PK will need to be determined in part by date. Since the goal is to be able to accurately compare events from each data set, this will need to begin with the Temporal and Spatial Data Tables, and end with the CAMEO code of the event. Thus, if an event is listed in GDELT as being a protest in Peshawar, Pakistan on 02/01/15, and also in Phoenix, we would consider the event common between both data sources. If, however, the event exists in GDELT but not in Phoenix, it would be a unique event. This should necessitate a composite PK, though I will need to think a little more about how to operationalize it.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ve-database maintained by <a href="https://github.com/colindeen">colindeen</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
